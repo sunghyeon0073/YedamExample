@@ -1,0 +1,510 @@
+<!-- <!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery Element Access</title>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script>
+		$(function() {
+      $("button").on("click", userDefineFunc());
+		});
+    function userDefineFunc() {
+
+    $("#list")      // id가 "list"인 요소의 자손 요소 중에서
+          .find("li") // <li>요소를 모두 선택한 후에,
+          .eq(1).html("두 번째 아이템을 선택했어요!!")  // 그 중에서 두 번째 요소의 값을 설정함.
+          .end()      // 다시 id가 "list"인 요소의 자손 요소 중에서 <li>요소를 모두 선택한 후에,
+          .eq(2).html("세 번째 아이템도 선택했어요!!"); // 그 중에서 세 번째 요소의 값을 설정함.
+          console.log($('#list').find('li').eq(2));
+    }
+	</script>
+</head>
+
+<body>
+
+	<h1>메소드 체이닝</h1>
+	<ul id="list">
+		<li>첫 번째 아이템이에요!</li>
+		<li>두 번째 아이템이에요!</li>
+		<li>세 번째 아이템이에요!</li>
+	</ul>
+	<button>텍스트 변경</button>
+	
+</body>
+
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery Element Access</title>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script>
+		$(function() {
+			$("#getter").on("click", function() {
+				var size = "너비는 " + $("#box").width() + "px이고, 높이는 "
+					+ $("#box").height() + "px입니다.<br>";
+				$("#text").html(size);
+			});
+			$("#setter").on("click", function() {
+				w = $("#box").width();
+				h = $("#box").height();
+				$("#box").width(w/2).height(h/2);
+
+				var size = "너비는 " + $("#box").width() + "px이고, 높이는 "
+					+ $("#box").height() + "px로 변경되었습니다.<br>";
+				$("#text").html(size);
+			});
+		});
+	</script>
+</head>
+
+<body>
+
+	<h1>.width() 메소드와 .height() 메소드</h1>
+	<p>아래의 버튼을 누르면 다음 div 요소의 크기를 읽어오거나 설정할 수 있어요!!</p>
+	<button id="getter">크기 읽어오기!</button>
+	<button id="setter">크기 줄이기!</button><br><br>
+	<div id="box" style="width: 400px; height: 200px; background-color: yellow"></div>
+	<p id="text"></p>
+	
+</body>
+
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery Element Access</title>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script>
+		$(function() {
+			$("button").on("click", function() {
+				// <img>요소의 src 속성값을 읽어오는 getter 메소드
+				var imgSrc = $("img").attr("src");  // width(100)
+        console.log(imgSrc);
+				// <img>요소의 src 속성값을 새로운 값으로 설정하는 setter 메소드
+				$("img").attr("src", "/examples/images/img_flag.png");
+			});
+		});
+	</script>
+</head>
+
+<body>
+
+	<h1>.attr() 메소드</h1>
+	<p>아래의 버튼을 누르면 다음 이미지를 변경할 수 있어요!!</p>
+	<button>src 속성 변경!</button><br><br>
+	<img src="/examples/images/img_flower.png" style="width:320px; height:214px; border: 1px solid black">
+	
+</body>
+
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery Element Insert</title>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script>
+		$(function() {
+			$("button").on("click", function() {
+        //  $("#list").prepend("<li>새로 추가된 아이템이에요!</li>");
+        //  $("#list").append("<li>새로 추가된 아이템이에요!</li>");
+        $("<li>새로 추가된 아이템이에요!</li>").appendTo("#list");
+			});
+		});
+	</script>
+</head>
+
+<body>
+
+	<h1>.append() 메소드</h1>
+	<ul id="list">
+		<li>첫 번째 아이템이에요!</li>
+		<li>두 번째 아이템이에요!</li>
+		<li>세 번째 아이템이에요!</li>
+	</ul>
+	<button>아이템 추가</button>
+	
+</body>
+
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery Element Insert</title>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<style>
+		table, tr, td { 
+			border: 2px solid red;
+			border-collapse: collapse;
+		}
+		table { margin-bottom: 15px; }
+	</style>
+	<script>
+		$(function() {
+			$("button").on("click", function() {
+				// id가 "firstRow"인 요소의 바로 앞에 새로운 <tr>요소를 추가함.
+				//  $("#firstRow").before("<tr><td>새로운 행이에요!</td></tr>");
+        $("#firstRow").after("<tr><td>새로운 행이에요!</td></tr>");
+			});
+		});
+	</script>
+</head>
+
+<body>
+
+	<h1>.before() 메소드</h1>
+	<table>
+
+		<tr id="firstRow">
+			<td>첫 번째 셀이에요!</td>
+			<td>두 번째 셀이에요!</td>
+		</tr>
+	</table>
+	<button>행 추가</button>
+	
+</body>
+
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery Element Insert</title>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<style>
+		div { margin: 10px; }
+		.content { border: 2px solid yellow; }
+		.wrapper { border: 2px solid green; }
+	</style>
+	<script>
+		$(function() {
+			$("button").on("click", function() {
+				// class가 "content"인 각 요소에 포함되는 새로운 요소를 추가함.
+				//  $(".content").wrap("<div class='wrapper'></div>");
+        //  $(".content").wrapAll("<div class='wrapper'></div>");
+        $(".content").wrapInner("<div class='wrapper'></div>");
+			});
+		});
+	</script>
+</head>
+
+<body>
+
+	<h1>.wrapInner() 메소드</h1>
+	<div class="content">첫 번째 컨텐츠에요!</div>
+	<div class="content">두 번째 컨텐츠에요!</div>
+	<button>div 요소 추가</button>
+	
+</body>
+
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery Element Clone</title>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script>
+		$(function() {
+			$("button").on("click", function() {
+				// id가 "firstItem"인 요소를 복사하여 id가 "list"인 요소에 추가함.
+				//  $("#firstItem").clone().appendTo("#list");
+        //  $("li:eq(1)").clone().css("background","yellow").appendTo("#list");
+        //  $("li:not(:eq(1))").clone().css("background","yellow").appendTo("#list");
+        $("li:gt(0)").clone().css("background","yellow").appendTo("#list");
+			});
+		});
+	</script>
+</head>
+
+<body>
+
+	<h1>.clone() 메소드</h1>
+	<ul id="list">
+		<li id="firstItem">첫 번째 아이템이에요!</li>
+		<li>두 번째 아이템이에요!</li>
+		<li>세 번째 아이템이에요!</li>
+	</ul>
+	<button>아이템 복사</button>
+	
+</body>
+
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery Element Replace</title>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script>
+		$(function() {
+			$("button").on("click", function() {
+				// class가 "item"인 모든 요소를 id가 "firstItme"인 요소로 대체함.
+				//  $(".item").replaceWith($("#firstItem"));
+        //  $(".item").replaceWith($("<li>새로운 아이템</li>"));
+        $(".item").replaceWith($("#firstItem").clone());
+      });
+		});
+	</script>
+</head>
+
+<body>
+
+	<h1>.replaceWith() 메소드</h1>
+	<ul>
+		<li class="item" id="firstItem">첫 번째 아이템이에요!</li>
+		<li class="item" id="secondItem">두 번째 아이템이에요!</li>
+		<li class="item" id="thirdItem">세 번째 아이템이에요!</li>
+	</ul>
+	<button>아이템 대체</button>
+	
+</body>
+
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="ko">
+
+<head>
+   <meta charset="UTF-8">
+   <title>jQuery Element Remove</title>
+   <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+   <script>
+      $(function() {
+         var data;
+         $("#detachBtn").on("click", function() {
+          // data = $(".content").remove();   // remove는 이벤트 핸들러를 완전 삭제(데이터는 둘다 살아남음).
+            data = $(".content").detach();
+          });
+         $("#restoreBtn").on("click", function() {
+            $("#container").append(data);   // detach() 메소드로 삭제되었던 모든 요소를 다시 추가함.
+         });
+      $('.content').on("click",function(){
+        console.log($('content'));
+      })
+      });
+   </script>
+</head>
+
+<body>
+
+   <h1>.detach() 메소드</h1>
+   <div id="container">
+      <div>첫 번째 컨텐츠에요!</div>
+      <div class="content">두 번째 컨텐츠에요!</div>
+      <div class="content">세 번째 컨텐츠에요!</div>
+   </div>
+   <br>
+   <button id="detachBtn">div 요소 삭제</button>
+   <button id="restoreBtn">div 요소 복구</button>
+   
+</body>
+
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery Element Traversing</title>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<style>
+		.container * { 
+			display: block;
+			border: 1px solid lightgray;
+			padding: 5px;
+			margin: 15px;
+		}
+	</style>
+	<script>
+		$(function() {
+			$("button").on("click", function() {
+        //  $("p").parent()							// <p>요소의 부모 요소를 선택함.
+        //  $("p").parents()
+        //  $("p").parentsUntil('.container')
+        $("p").closest('div')
+          .css({"border": "2px solid red"});	// 해당 요소의 CSS 스타일을 변경함.
+			});
+		});
+	</script>
+</head>
+
+<body>
+
+	<h1>.parent() 메소드</h1>
+	<div class="container">
+		<div>div 요소
+			<ul>ul 요소
+				<li>li 요소</li>
+				<li>li 요소
+					<p>p 요소 (기준)
+						<span>span 요소</span>
+					</p>
+				</li>
+				<li>li 요소</li>
+			</ul>
+		</div>
+	</div>
+
+	<button>p 요소의 부모 요소</button>
+	
+</body>
+
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery Sibling Element Traversing</title>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<style>
+		.container * { 
+			display: block;
+			border: 1px solid lightgray;
+			padding: 5px;
+			margin: 15px;
+		}
+	</style>
+	<script>
+		$(function() {
+			$("button").on("click", function() {
+				//  $("h4").siblings()						// <h4>요소의 형제 요소를 모두 선택함.
+        //  $("h4").prev()
+        //  $("h4").prev().prev()
+        //  $("h4").prevUntil('h2')
+        //  $("h4").next()  
+        $("h4").nextUntil('p')
+          .css({"border": "2px solid red"});	// 해당 요소의 CSS 스타일을 변경함.
+			});
+		});
+	</script>
+</head>
+
+<body>
+
+	<h1>.siblings() 메소드</h1>
+	<div class="container">
+		<div>div 요소</div>
+		<h2>h2 요소</h2>
+		<h3>h3 요소</h3>
+		<h4>h4 요소 (기준)</h4>
+		<h5>h5 요소</h5>
+		<h6>h6 요소</h6>
+		<p>p 요소</p>
+	</div>
+
+	<button>h4 요소의 형제 요소</button>
+	
+</body>
+
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery Descendant Element Traversing</title>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<style>
+		.container * { 
+			display: block;
+			border: 1px solid lightgray;
+			padding: 5px;
+			margin: 15px;
+		}
+	</style>
+	<script>
+		$(function() {
+			$("button").on("click", function() {
+				//  $("ul").children()						// <p>요소의 자식 요소를 모두 선택함.
+        $("ul").children().eq(1)
+          .css({"border": "2px solid red"});	// 해당 요소의 CSS 스타일을 변경함.
+			});
+		});
+	</script>
+</head>
+
+<body>
+
+	<h1>.children() 메소드</h1>
+	<div class="container">
+		<div>div 요소
+			<ul>ul 요소 (기준)
+				<li>li 요소</li>
+				<li>li 요소
+					<p>p 요소
+						<span>span 요소</span>
+					</p>
+				</li>
+				<li>li 요소
+					<p>p 요소</p>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<button>ul 요소의 자식 요소</button>
+	
+</body>
+
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery Ajax Method</title>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script>
+		$(function() {
+			$("#requestBtn").on("click", function() {
+				$.ajax("index.html")
+				.done(function(result) {
+					alert("요청 성공");
+          console.log(result);
+				})
+				.fail(function(error) {
+					alert("요청 실패");
+          console.log(error);
+				})
+				.always(function() {  // try catch 구문에서 finally와 같은 역할
+					alert("요청 완료");
+				});
+			});
+		});
+	</script>
+</head>
+
+<body>
+
+	<h1>$.ajax() 메소드</h1>
+	<button id="requestBtn">$.ajax() 메소드 실행</button>
+	<p id="text"></p>
+	
+</body>
+
+</html> -->

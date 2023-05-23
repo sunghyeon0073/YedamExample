@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>webapp/javascript/sample1.html</title>
+</head>
+<body>
+<div id="show">
+	<div id="child">
+		<p>Hello</p>
+	</div>
+	<ul>
+		<li>Apple</li>
+		<li>Banana</li>
+	</ul>
+</div>
+<script>
+	let child = document.getElementById('child');
+	let elem = document.querySelector('li');
+	elem.innerText = '사과';
+	
+	elem = document.querySelector('li:nth-of-type(2)')
+	elem.addEventListener('click', function (){
+		alert(elem.innerText);
+	})
+	console.log(elem.innerText);
+	//console.log(elem.innerText);
+	//console.log(child.nextElementSibling.children[0]);
+	/*
+	let name = "홍길동";
+	console.log(name);
+	
+	let num = 100;
+	num = "apple";
+	num = 100 > 20;
+	console.log(typeof num);
+	
+	let obj = {}
+	obj.id = 'user01';
+	obj.name = 'Hong';
+	obj.hobbies = ['reading', 'sleeping', 'eating'];
+	
+	console.log(obj.hobbies[0]);
+	for(let hobby of obj.hobbies){
+		console.log(hobby);
+	}
+	console.clear(); // 로그지우기.
+	for(let prop in obj){
+		console.log(prop, obj[prop])
+	}
+	*/
+	// Document Object Model
+	//console.log(window.document.children[0].children);
+	//window.alert('hi');
+	
+</script>
+</body>
+</html>

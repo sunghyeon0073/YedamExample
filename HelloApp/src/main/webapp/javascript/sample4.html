@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<p>sample4.html</p>
+	<ul id="list">
+		<li>1, kildong, Hong, 2334</li>
+	</ul>
+	<script>
+		let xht = new XMLHttpRequest(); // 비동기방식처리.
+		xht.open('get', 'MOCK_DATA.json');
+		xht.send();
+		xht.onload = function () {
+			//console.log(JSON.parse(xht.response));
+		}
+		
+		fetch('MOCK_DATA.json')
+		.then(function(resolve){
+			console.log('success');
+			return resolve.texts(); // error.
+		}, function(){
+			console.log('error');
+		})
+		.then(function(result){
+			console.log('success', result);
+		}, function(error){
+			console.log('error', error);
+		})
+		
+		fetch('MOCK_DATA.json')
+		.then( resolve =>  resolve.json() ) // text()
+		//.then(function(resolve) { return resolve.text(); })
+		.then( result => { 
+			console.log(result); 
+			for (let i=0; i<result.length; i++){
+				// 코드 작성
+				let li = document.createElement('li');
+				ul.append(li);
+			}
+		})
+		.catch( error => console.log(error) )
+	</script>
+</body>
+</html>

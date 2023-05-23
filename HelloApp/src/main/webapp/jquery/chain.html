@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery Descendant Element Traversing</title>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<style>
+		.container * { 
+			display: block;
+			border: 1px solid lightgray;
+			padding: 5px;
+			margin: 15px;
+		}
+	</style>
+	<script>
+		$(function() {
+			$("button").on("click", function() {
+				//  $("ul").children()						// <p>요소의 자식 요소를 모두 선택함.
+        $("ul").children().eq(1)
+          .css({"border": "2px solid red"});	// 해당 요소의 CSS 스타일을 변경함.
+			});
+		});
+	</script>
+</head>
+
+<body>
+
+	<h1>.children() 메소드</h1>
+	<div class="container">
+		<div>div 요소
+			<ul>ul 요소 (기준)
+				<li>li 요소</li>
+				<li>li 요소
+					<p>p 요소
+						<span>span 요소</span>
+					</p>
+				</li>
+				<li>li 요소
+					<p>p 요소</p>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<button>ul 요소의 자식 요소</button>
+	
+</body>
+
+</html>
