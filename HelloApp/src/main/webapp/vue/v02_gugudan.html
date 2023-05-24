@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>v02_gugudan.html</title>
+  <script src="https://unpkg.com/vue@2"></script>
+</head>
+
+<body>
+  <div id="app">
+    <ul v-for="n in 5">
+      <li v-for="m in 5">{{n}} x {{m}} = {{n * m}}</li>
+    </ul>
+    <table border="1">
+      <tbody>
+        <tr v-for="i in 5">
+          <td v-for="j in 9">{{i}} x {{j}} = {{i * j}}</td>
+        </tr>
+      </tbody>
+    </table>    
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+       
+      }
+    })
+  </script>
+</body>
+
+</html>

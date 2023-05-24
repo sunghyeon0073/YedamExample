@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <style>
+
+    ul {
+        list-style: none;
+     }
+    
+    </style>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>v03_event1</title>
+  <script src="https://unpkg.com/vue@2"></script>
+</head>
+<body>
+  <div class="app">
+    <label>이름</label><input v-model="name">
+    <label>성적</label><input v-model="score">
+    <button v-on:click="saveScore">저장</button>
+    
+
+    <h3>학생목록</h3>
+
+    <ul>
+      <li v-for="stu in studentList">{{stu.name}} - {{stu.score}} <button v-on:click="Remove">삭제</button></li>
+    </ul>
+  </div>
+  <button v-on:click="order">이름 오름차순 정렬</button>
+
+  <script>
+    new Vue({
+      el: '.app',
+      data: {
+        name: '',
+        score: '',
+        studentList: []
+      },
+      methods: {
+        saveScore: function() {
+          if (this.name && this.score) {
+            this.studentList.push({ name: this.name, score: this.score });
+            this.name = '';
+            this.score = '';
+          }
+          },
+          Remove:function(e){
+          e.target.parentElement.remove();
+        }
+      },
+      order:function(a,b){
+        return a.name < b.name ? -1 : a.name > b.name ? 1: 0;
+      }
+    });
+  </script>
+</body>
+</html>
